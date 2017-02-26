@@ -1,0 +1,122 @@
+<html>
+	<head>
+		<link rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" 
+			href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/css/bootstrap-datetimepicker.min.css" />
+		<link rel="stylesheet"
+			href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-header">
+				<h2> Add Climbing Recode </h2>
+			</div>
+			<form method="POST">
+				<div class="form-group datepicker">
+					<div class="row">
+						<div class="col-lg-2">
+							<label class="label label-default">Date</label>
+						</div>
+						<div class="col-lg-3">
+							<div class="input-group">
+								<input type="text" disabled="disabled"
+									class="form-control" name="date">
+								<span class="input-group-btn">
+									<button class="btn btn-success" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-lg-2">
+							<label class="label label-default"> Mountain Name</label>
+						</div>
+						<div class="col-lg-5">
+							<input type="text" name="mname" class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-lg-2">
+							<label class="label label-default">Place</label>
+						</div>
+						<div class="col-lg-5">
+							<input type="text" name="mplace" class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-lg-2">
+							<label class="label label-default"> Nearest Station</label>
+						</div>
+						<div class="col-lg-5">
+							<input type="text" name="station" class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-lg-2">
+							<label class="label label-default"> Distance</label>
+						</div>
+						<div class="col-lg-2">
+							<input type="number" name="wdistance" class="form-control">
+						</div>
+						<label>km</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-lg-2">
+							<label class="label label-default"> Walk Time</label>
+						</div>
+						<div class="col-lg-2">
+							<input type="number" name="wtime" class="form-control">
+						</div>
+						<label>hours</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-lg-2">
+							<label class="label label-default"> Level</label>
+						</div>
+						<div class="col-lg-5">
+							<input type="text" name="level" class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-lg-2">
+							<label class="label label-default"> Evaluation</label>
+						</div>
+						<div class="col-lg-5">
+							<input type="text" name="evaluation" class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<button type="button" class="btn btn-primary" onclick="submit();">Add</button>
+						<a href="index.html" class="btn btn-primary">Cancel</a>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/lang/ja.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="js/create-cr.js"></script>
+	</body>
+</html>
