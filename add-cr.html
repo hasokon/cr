@@ -12,22 +12,24 @@
 			<div class="page-header">
 				<h2> Add Climbing Recode </h2>
 			</div>
-			<form method="POST">
-				<div class="form-group datepicker">
+			<form action="index.php" method="POST">
+				<div class="form-group">
 					<div class="row">
 						<div class="col-lg-2">
 							<label class="label label-default">Date</label>
 						</div>
-						<div class="col-lg-3">
-							<div class="input-group">
-								<input type="text" disabled="disabled"
-									class="form-control" name="date">
+						<div class="col-lg-2">
+							<input type="text" name="date" class="form-control datepicker">
+							<!--
+							<div class="input-group datepicker">
+								<input type="text" name="date" disabled="disabled" class="form-control">
 								<span class="input-group-btn">
 									<button class="btn btn-success" type="button">
-										<i class="fa fa-calendar"></i>
+										<i class="fa fa-calendar fa-fw"></i>
 									</button>
 								</span>
 							</div>
+							-->
 						</div>
 					</div>
 				</div>
@@ -38,6 +40,19 @@
 						</div>
 						<div class="col-lg-5">
 							<input type="text" name="mname" class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-lg-2">
+							<label class="label label-default">Mountain Height</label>
+						</div>
+						<div class="col-lg-2">
+							<input type="number" name="mheight" class="form-control">
+						</div>
+						<div class="col-lg-1">
+							<label>m</label>
 						</div>
 					</div>
 				</div>
@@ -57,7 +72,7 @@
 							<label class="label label-default"> Nearest Station</label>
 						</div>
 						<div class="col-lg-5">
-							<input type="text" name="station" class="form-control">
+							<input type="text" name="mstation" class="form-control">
 						</div>
 					</div>
 				</div>
@@ -69,7 +84,9 @@
 						<div class="col-lg-2">
 							<input type="number" name="wdistance" class="form-control">
 						</div>
-						<label>km</label>
+						<div class="col-lg-1">
+							<label>km</label>
+						</div>
 					</div>
 				</div>
 				<div class="form-group">
@@ -80,7 +97,9 @@
 						<div class="col-lg-2">
 							<input type="number" name="wtime" class="form-control">
 						</div>
-						<label>hours</label>
+						<div class="col-lg-1">
+							<label>hours</label>
+						</div>
 					</div>
 				</div>
 				<div class="form-group">
@@ -88,8 +107,15 @@
 						<div class="col-lg-2">
 							<label class="label label-default"> Level</label>
 						</div>
-						<div class="col-lg-5">
-							<input type="text" name="level" class="form-control">
+						<div class="col-lg-2">
+							<input type="hidden" name="level" value=1>
+							<span>
+								<label><i class="fa fa-star fa-lg" style="color:gold"></i></label>
+								<label><i class="fa fa-star-o fa-lg"></i></label>
+								<label><i class="fa fa-star-o fa-lg"></i></label>
+								<label><i class="fa fa-star-o fa-lg"></i></label>
+								<label><i class="fa fa-star-o fa-lg"></i></label>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -98,8 +124,15 @@
 						<div class="col-lg-2">
 							<label class="label label-default"> Evaluation</label>
 						</div>
-						<div class="col-lg-5">
-							<input type="text" name="evaluation" class="form-control">
+						<div class="col-lg-2">
+							<input type="hidden" name="evaluation" value=1>
+							<span>
+								<label><i class="fa fa-star fa-lg" style="color:gold"></i></label>
+								<label><i class="fa fa-star-o fa-lg"></i></label>
+								<label><i class="fa fa-star-o fa-lg"></i></label>
+								<label><i class="fa fa-star-o fa-lg"></i></label>
+								<label><i class="fa fa-star-o fa-lg"></i></label>
+							</span>
 						</div>
 					</div>
 				</div>

@@ -1,3 +1,6 @@
+<?php
+?>
+
 <html>
 	<head>
 		<link rel="stylesheet"
@@ -20,6 +23,19 @@
 					<th>Walk Time</th>
 					<th>Level</th>
 					<th>Evaluation</th>
+				</tr>
+				<tr>
+				<?php
+					echo "<td>".$_POST['date']."</td>";
+					echo "<td>".$_POST['mname']."</td>";
+					echo "<td>".$_POST['mheight']." m</td>";
+					echo "<td>".$_POST['mplace']."</td>";
+					echo "<td>".$_POST['mstation']."</td>";
+					echo "<td>".$_POST['wdistance']." km</td>";
+					echo "<td>".$_POST['wtime']." hours</td>";
+					echo "<td>".$_POST['level']."</td>";
+					echo "<td>".$_POST['evaluation']."</td>";
+				?>
 				</tr>
 			</table>
 
