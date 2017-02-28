@@ -1,4 +1,73 @@
 <?php
+//SQL connect
+$server = "localhost";
+$userName = "root";
+$password = "gzxf6420";
+$dbName = "climbing_recode";
+$cr = "climbing_recode";
+
+$userId = 1;
+
+$mysqli = new mysqli($server, $userName, $password, $dbName);
+
+if ($mysqli->connect_error) {
+	echo $mysqli->connect_error;
+	exit();
+}else{
+	$mysqli->set_charset("utf-8");
+}
+
+//Insert New Data
+//var_dump($_POST);
+$allSet = true;
+$countPostValues = 0;
+foreach($_POST as $key => $value) {
+	//echo $key.":".$value."<br>";
+	if ($value == ""){
+		$allSet = false;
+	}
+	$countPostValues++;
+}
+if ($countPostValues <= 0) $allSet = false;
+
+if($allSet) {
+	$sql = "INSERT INTO ".$cr." VALUES (";
+	$sql .= '3000,';
+	$sql .= '"'.$_POST['date'].'",';
+	$sql .= '"'.$_POST['mname'].'",';
+	$sql .= $_POST['mheight'].',';
+	$sql .= '"'.$_POST['mplace'].'",';
+	$sql .= '"'.$_POST['mstation'].'",';
+	$sql .= $_POST['wdistance'].',';
+	$sql .= $_POST['wtime'].',';
+	$sql .= $_POST['level'].',';
+	$sql .= $_POST['evaluation'].',';
+	$sql .= '"'.$userId.'");';
+
+	$result = $mysqli->query($sql);
+	if (!$result) {
+		echo $mysqli->error;
+		exit();
+	}
+}
+
+//Table Value Get
+$sql = "SELECT * FROM ".$cr;
+
+$result = $mysqli->query($sql);
+if (!$result) {
+	echo $mysqli->error;
+	exit();
+}
+
+$row_count = $result->num_rows;
+while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+	$rows[] = $row;
+}
+
+//Post Processing
+$result->free();
+$mysqli->close();
 ?>
 
 <html>
@@ -24,19 +93,21 @@
 					<th>Level</th>
 					<th>Evaluation</th>
 				</tr>
-				<tr>
 				<?php
-					echo "<td>".$_POST['date']."</td>";
-					echo "<td>".$_POST['mname']."</td>";
-					echo "<td>".$_POST['mheight']." m</td>";
-					echo "<td>".$_POST['mplace']."</td>";
-					echo "<td>".$_POST['mstation']."</td>";
-					echo "<td>".$_POST['wdistance']." km</td>";
-					echo "<td>".$_POST['wtime']." hours</td>";
-					echo "<td>".$_POST['level']."</td>";
-					echo "<td>".$_POST['evaluation']."</td>";
+					foreach($rows as $row) {
+						echo "<tr>";
+						echo "<td>".$row['date']."</td>";
+						echo "<td>".$row['name']."</td>";
+						echo "<td>".$row['height']." m</td>";
+						echo "<td>".$row['place']."</td>";
+						echo "<td>".$row['station']."</td>";
+						echo "<td>".$row['distance']." km</td>";
+						echo "<td>".$row['time']." hours</td>";
+						echo "<td>".$row['level']."</td>";
+						echo "<td>".$row['evaluation']."</td>";
+						echo "</tr>";
+					}
 				?>
-				</tr>
 			</table>
 
 			<div class="text-center">

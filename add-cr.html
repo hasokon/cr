@@ -12,7 +12,7 @@
 			<div class="page-header">
 				<h2> Add Climbing Recode </h2>
 			</div>
-			<form action="index.php" method="POST">
+			<form id="cr-form" action="index.php" method="POST">
 				<div class="form-group">
 					<div class="row">
 						<div class="col-lg-2">
@@ -108,13 +108,13 @@
 							<label class="label label-default"> Level</label>
 						</div>
 						<div class="col-lg-2">
-							<input type="hidden" name="level" value=1>
+							<input type="hidden" name="level" value=1 id="level">
 							<span>
-								<label><i class="fa fa-star fa-lg" style="color:gold"></i></label>
-								<label><i class="fa fa-star-o fa-lg"></i></label>
-								<label><i class="fa fa-star-o fa-lg"></i></label>
-								<label><i class="fa fa-star-o fa-lg"></i></label>
-								<label><i class="fa fa-star-o fa-lg"></i></label>
+								<label class="star"><i class="fa fa-star fa-lg" style="color:gold"></i></label>
+								<label class="star"><i class="fa fa-star-o fa-lg"></i></label>
+								<label class="star"><i class="fa fa-star-o fa-lg"></i></label>
+								<label class="star"><i class="fa fa-star-o fa-lg"></i></label>
+								<label class="star"><i class="fa fa-star-o fa-lg"></i></label>
 							</span>
 						</div>
 					</div>
@@ -125,21 +125,21 @@
 							<label class="label label-default"> Evaluation</label>
 						</div>
 						<div class="col-lg-2">
-							<input type="hidden" name="evaluation" value=1>
+							<input type="hidden" name="evaluation" value=1 id="evaluation">
 							<span>
-								<label><i class="fa fa-star fa-lg" style="color:gold"></i></label>
-								<label><i class="fa fa-star-o fa-lg"></i></label>
-								<label><i class="fa fa-star-o fa-lg"></i></label>
-								<label><i class="fa fa-star-o fa-lg"></i></label>
-								<label><i class="fa fa-star-o fa-lg"></i></label>
+								<label class="star"><i class="fa fa-star fa-lg" style="color:gold"></i></label>
+								<label class="star"><i class="fa fa-star-o fa-lg"></i></label>
+								<label class="star"><i class="fa fa-star-o fa-lg"></i></label>
+								<label class="star"><i class="fa fa-star-o fa-lg"></i></label>
+								<label class="star"><i class="fa fa-star-o fa-lg"></i></label>
 							</span>
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="row">
-						<button type="button" class="btn btn-primary" onclick="submit();">Add</button>
-						<a href="index.html" class="btn btn-primary">Cancel</a>
+						<button id="add" type="button" class="btn btn-primary">Add</button>
+						<a href="index.php" class="btn btn-primary">Cancel</a>
 					</div>
 				</div>
 			</form>
@@ -150,6 +150,6 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/lang/ja.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.min.js"></script>
-		<script src="js/create-cr.js"></script>
+		<script src="js/add-cr.js"></script>
 	</body>
 </html>
