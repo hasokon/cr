@@ -31,8 +31,7 @@ foreach($_POST as $key => $value) {
 if ($countPostValues <= 0) $allSet = false;
 
 if($allSet) {
-	$sql = "INSERT INTO ".$cr." VALUES (";
-	$sql .= '3000,';
+	$sql = "INSERT INTO ".$cr."(date, name, height, place, station, distance, time, level, evaluation, user_id) VALUES (";
 	$sql .= '"'.$_POST['date'].'",';
 	$sql .= '"'.$_POST['mname'].'",';
 	$sql .= $_POST['mheight'].',';
