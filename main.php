@@ -20,38 +20,42 @@ if ($mysqli->connect_error) {
 }else{
 	$mysqli->set_charset("utf-8");
 }
-
-//Insert New Data
-//var_dump($_POST);
-$allSet = true;
-$countPostValues = 0;
-foreach($_POST as $key => $value) {
-	//echo $key.":".$value."<br>";
-	if ($value == ""){
-		$allSet = false;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	//Insert New Data
+	//var_dump($_POST);
+	$allSet = true;
+	$countPostValues = 0;
+	foreach($_POST as $key => $value) {
+		//echo $key.":".$value."<br>";
+		if ($value == ""){
+			$allSet = false;
+		}
+		$countPostValues++;
 	}
-	$countPostValues++;
-}
-if ($countPostValues <= 0) $allSet = false;
+	if ($countPostValues <= 0) $allSet = false;
 
-if($allSet) {
-	$sql = "INSERT INTO ".$cr."(date, name, height, place, station, distance, time, level, evaluation, user_id) VALUES (";
-	$sql .= '"'.$_POST['date'].'",';
-	$sql .= '"'.$_POST['mname'].'",';
-	$sql .= $_POST['mheight'].',';
-	$sql .= '"'.$_POST['mplace'].'",';
-	$sql .= '"'.$_POST['mstation'].'",';
-	$sql .= $_POST['wdistance'].',';
-	$sql .= $_POST['wtime'].',';
-	$sql .= $_POST['level'].',';
-	$sql .= $_POST['evaluation'].',';
-	$sql .= $_SESSION['userId'].');';
+	if($allSet) {
+		$sql = "INSERT INTO ".$cr."(date, name, height, place, station, distance, time, level, evaluation, user_id) VALUES (";
+		$sql .= '"'.$_POST['date'].'",';
+		$sql .= '"'.$_POST['mname'].'",';
+		$sql .= $_POST['mheight'].',';
+		$sql .= '"'.$_POST['mplace'].'",';
+		$sql .= '"'.$_POST['mstation'].'",';
+		$sql .= $_POST['wdistance'].',';
+		$sql .= $_POST['wtime'].',';
+		$sql .= $_POST['level'].',';
+		$sql .= $_POST['evaluation'].',';
+		$sql .= $_SESSION['userId'].');';
 
-	$result = $mysqli->query($sql);
-	if (!$result) {
-		echo $mysqli->error;
-		exit();
+		$result = $mysqli->query($sql);
+		if (!$result) {
+			echo $mysqli->error;
+			exit();
+		}
 	}
+	header('Location:main.php',true,303);
+	$result->free();
+	$mysqli->close();
 }
 
 //Table Value Get
@@ -74,48 +78,51 @@ $mysqli->close();
 ?>
 
 <html>
-	<head>
-		<link rel="stylesheet"
-			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	</head>
-	<body>
-		<div class="container">
-			<div class="page-header">
-				<h1> Climbing Recode </h1>
-			</div>
+<head>
+<link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+<div class="page-header">
+<h1> Climbing Recode </h1>
+</div>
 
-			<table class="table table-striped">
-				<tr>
-					<th>Date</th>
-					<th>Name</th>
-					<th>Height</th>
-					<th>Place</th>
-					<th>Nearest Station</th>
-					<th>Distance</th>
-					<th>Walk Time</th>
-					<th>Level</th>
-					<th>Evaluation</th>
-				</tr>
-				<?php
-					foreach($rows as $row) {
-						echo "<tr>";
-						echo "<td>".$row['date']."</td>";
-						echo "<td>".$row['name']."</td>";
-						echo "<td>".$row['height']." m</td>";
-						echo "<td>".$row['place']."</td>";
-						echo "<td>".$row['station']."</td>";
-						echo "<td>".$row['distance']." km</td>";
-						echo "<td>".$row['time']." hours</td>";
-						echo "<td>".$row['level']."</td>";
-						echo "<td>".$row['evaluation']."</td>";
-						echo "</tr>";
-					}
-				?>
-			</table>
+<table class="table table-striped">
+<tr>
+<th>Date</th>
+<th>Name</th>
+<th>Height</th>
+<th>Place</th>
+<th>Nearest Station</th>
+<th>Distance</th>
+<th>Walk Time</th>
+<th>Level</th>
+<th>Evaluation</th>
+</tr>
+<?php
+foreach($rows as $row) {
+	echo "<tr>";
+	echo "<td>".$row['date']."</td>";
+	echo "<td>".$row['name']."</td>";
+	echo "<td>".$row['height']." m</td>";
+	echo "<td>".$row['place']."</td>";
+	echo "<td>".$row['station']."</td>";
+	echo "<td>".$row['distance']." km</td>";
+	echo "<td>".$row['time']." hours</td>";
+	echo "<td>".$row['level']."</td>";
+	echo "<td>".$row['evaluation']."</td>";
+	echo "</tr>";
+}
+?>
+</table>
 
-			<div class="text-center">
-				<a href="add-cr.html" class="btn btn-primary" role="button">Add Climbing Recode</a>
-			</div>
-		</div>
-	</body>
+<div class="text-center">
+<span>
+<a href="add-cr.html" class="btn btn-primary" role="button">Add Climbing Recode</a>
+<a href="logout.php" class="btn btn-primary" role="button">Logout</a>
+</span>
+</div>
+</div>
+</body>
 </html>

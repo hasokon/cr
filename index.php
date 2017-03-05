@@ -3,6 +3,10 @@ require 'password.php';
 
 session_start();
 
+if (isset($_SESSION['userId']) && isset($_SESSION['userName'])) {
+	header('Location:main.php');
+}
+
 $db_server = "localhost";
 $db_userName = "root";
 $db_password = "gzxf6420";
@@ -35,7 +39,7 @@ if (isset($_POST['login'])) {
 			$row = $result->fetch_array(MYSQLI_ASSOC);
 			$id = $row['id'];
 			$password = $row['password'];
-			if ($userPassword == $password) {
+			if (password_verify($userPassword, $password)) {
 				$_SESSION['userId'] = $id;
 				$_SESSION['userName'] = $userName;
 				header('Location:main.php');
@@ -72,13 +76,13 @@ if (isset($_POST['login'])) {
 					<h1> Login Your Account</h1>
 					<form method="POST" action="index.php">
 						<input type="text" name="userName" placeholder="Username">
-						<input type="text" name="userPassword" placeholder="Password">
+						<input type="password" name="userPassword" placeholder="Password">
 						<?php
-						//if (!empty($errorMessage)) {
+						if (!empty($errorMessage)) {
 							echo '<label>'.$errorMessage."</label>";
-						//}
+						}
 						?>
-						<input type="submit" name="login" class="login loginmodal-submit" value="submit">
+						<input type="submit" name="login" class="login loginmodal-submit" value="Login">
 					</form>
 					<div class="login-help">
 						<a href="register.php">Register</a>

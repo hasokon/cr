@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+$_SESSION = array();
+@session_destroy();
+?>
 <html>
 	<head>
 		<title> Logout </title>
@@ -10,7 +16,7 @@
 			</div>
 			<div class="text-center">
 				<h3>You have logged out</h3>
-				<a href="login.php" class="btn btn-primary">Return to Login page</a>
+				<a href="index.php" class="btn btn-primary">Return to Login page</a>
 			</div>
 		</div>
 	</body>
